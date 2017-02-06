@@ -29,7 +29,7 @@ class ViewController: UIViewController, MBProgressHUDDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func showSimple(sender: UIButton) {
+    @IBAction func showSimple(_ sender: UIButton) {
         // The hud will dispable all input on the view (use the higest view possible in the view hierarchy)
         HUD = MBProgressHUD(view: self.navigationController!.view)
         self.navigationController!.view.addSubview(HUD!)
@@ -43,7 +43,7 @@ class ViewController: UIViewController, MBProgressHUDDelegate {
             }, animated: true)
     }
 
-    @IBAction func showWithLabel(sender: UIButton) {
+    @IBAction func showWithLabel(_ sender: UIButton) {
         HUD = MBProgressHUD(view: self.navigationController!.view)
         self.navigationController!.view.addSubview(HUD!)
         
@@ -55,7 +55,7 @@ class ViewController: UIViewController, MBProgressHUDDelegate {
             }, animated: true)
     }
     
-    @IBAction func showWithDetailsLabel(sender: UIButton) {
+    @IBAction func showWithDetailsLabel(_ sender: UIButton) {
         HUD = MBProgressHUD(view: self.navigationController!.view)
         self.navigationController!.view.addSubview(HUD!)
         
@@ -69,12 +69,12 @@ class ViewController: UIViewController, MBProgressHUDDelegate {
             }, animated: true)
     }
     
-    @IBAction func showWithLabelDeterminate(sender: UIButton) {
+    @IBAction func showWithLabelDeterminate(_ sender: UIButton) {
         HUD = MBProgressHUD(view: self.navigationController!.view)
         self.navigationController!.view.addSubview(HUD!)
         
         // Set determinate mode
-        HUD!.mode = MBProgressHUDMode.Determinate
+        HUD!.mode = MBProgressHUDMode.determinate
         
         HUD!.delegate = self
         HUD!.labelText = "Loading"
@@ -85,11 +85,11 @@ class ViewController: UIViewController, MBProgressHUDDelegate {
             }, animated: true)
     }
     
-    @IBAction func showWithLabelAnnularDeterminate(sender: UIButton) {
+    @IBAction func showWithLabelAnnularDeterminate(_ sender: UIButton) {
         HUD = MBProgressHUD(view: self.navigationController!.view)
         self.navigationController!.view.addSubview(HUD!)
         
-        HUD!.mode = MBProgressHUDMode.AnnularDeterminate
+        HUD!.mode = MBProgressHUDMode.annularDeterminate
         
         HUD!.delegate = self
         HUD!.labelText = "Loading"
@@ -100,12 +100,12 @@ class ViewController: UIViewController, MBProgressHUDDelegate {
             }, animated: true)
     }
     
-    @IBAction func showWithLabelDeterminateHorizontalBar(sender: UIButton) {
+    @IBAction func showWithLabelDeterminateHorizontalBar(_ sender: UIButton) {
         HUD = MBProgressHUD(view: self.navigationController!.view)
         self.navigationController!.view.addSubview(HUD!)
         
         // Set determinate bar mode
-        HUD!.mode = .DeterminateHorizontalBar;
+        HUD!.mode = .determinateHorizontalBar;
         
         HUD!.delegate = self;
         
@@ -115,7 +115,7 @@ class ViewController: UIViewController, MBProgressHUDDelegate {
             }, animated: true)
     }
     
-    @IBAction func showWithCustomView(sender: UIButton) {
+    @IBAction func showWithCustomView(_ sender: UIButton) {
         HUD = MBProgressHUD(view: self.navigationController!.view)
         self.navigationController!.view.addSubview(HUD!)
         
@@ -124,7 +124,7 @@ class ViewController: UIViewController, MBProgressHUDDelegate {
         HUD!.customView = UIImageView(image: UIImage(named: "37x-Checkmark.png"))
         
         // Set custom view mode
-        HUD!.mode = .CustomView;
+        HUD!.mode = .customView;
         
         HUD!.delegate = self;
         HUD!.labelText = "Completed";
@@ -133,19 +133,19 @@ class ViewController: UIViewController, MBProgressHUDDelegate {
         HUD!.hide(true, afterDelay:3)
     }
     
-    @IBAction func showWithLabelMixed(sender: UIButton) {
+    @IBAction func showWithLabelMixed(_ sender: UIButton) {
         HUD = MBProgressHUD(view: self.navigationController!.view)
         self.navigationController!.view.addSubview(HUD!)
         
         HUD!.delegate = self
         HUD!.labelText = "Connecting"
-        HUD!.minSize = CGSizeMake(135.0, 135.0)
+        HUD!.minSize = CGSize(width: 135.0, height: 135.0)
         HUD!.showWhileExecuting({ [unowned self] () -> Void in
             self.myMixedTask()
             }, animated: true)
     }
     
-    @IBAction func showUsingBlocks(sender: UIButton) {
+    @IBAction func showUsingBlocks(_ sender: UIButton) {
         let hud: MBProgressHUD = MBProgressHUD(view: self.navigationController!.view)
         self.navigationController!.view.addSubview(hud)
         
@@ -158,7 +158,7 @@ class ViewController: UIViewController, MBProgressHUDDelegate {
         }
     }
     
-    @IBAction func showOnWindow(sender: UIButton) {
+    @IBAction func showOnWindow(_ sender: UIButton) {
         HUD = MBProgressHUD(view: self.view.window!)
         self.view.window!.addSubview(HUD!)
         
@@ -170,9 +170,9 @@ class ViewController: UIViewController, MBProgressHUDDelegate {
             }, animated: true)
     }
     
-    @IBAction func showURL(sender: UIButton) {
-        let URL: NSURL? = NSURL(string: "http://a1408.g.akamai.net/5/1408/1388/2005110403/1a1a1ad948be278cff2d96046ad90768d848b41947aa1986/sample_iPod.m4v.zip")
-        let request: NSURLRequest = NSURLRequest(URL: URL!)
+    @IBAction func showURL(_ sender: UIButton) {
+        let URL: Foundation.URL? = Foundation.URL(string: "http://a1408.g.akamai.net/5/1408/1388/2005110403/1a1a1ad948be278cff2d96046ad90768d848b41947aa1986/sample_iPod.m4v.zip")
+        let request: URLRequest = URLRequest(url: URL!)
         
         let connection: NSURLConnection? = NSURLConnection(request: request, delegate: self)
         connection!.start()
@@ -181,7 +181,7 @@ class ViewController: UIViewController, MBProgressHUDDelegate {
         HUD!.delegate = self
     }
     
-    @IBAction func showWithGradient(sender: UIButton) {
+    @IBAction func showWithGradient(_ sender: UIButton) {
         HUD = MBProgressHUD(view: self.navigationController!.view)
         self.navigationController!.view.addSubview(HUD!)
         
@@ -194,11 +194,11 @@ class ViewController: UIViewController, MBProgressHUDDelegate {
             }, animated: true)
     }
     
-    @IBAction func showTextOnly(sender: UIButton) {
+    @IBAction func showTextOnly(_ sender: UIButton) {
         let hud: MBProgressHUD = MBProgressHUD.showHUDAddedTo(self.navigationController!.view, animated: true)
         
         // Configure for text only and offset down
-        hud.mode = .Text
+        hud.mode = .text
         hud.labelText = "Some message..."
         hud.margin = 10.0
         hud.removeFromSuperViewOnHide = true
@@ -206,7 +206,7 @@ class ViewController: UIViewController, MBProgressHUDDelegate {
         hud.hide(true, afterDelay: 3)
     }
     
-    @IBAction func showWithColor(sender: UIButton) {
+    @IBAction func showWithColor(_ sender: UIButton) {
         HUD = MBProgressHUD(view: self.navigationController!.view)
         self.navigationController!.view.addSubview(HUD!)
         
@@ -219,7 +219,7 @@ class ViewController: UIViewController, MBProgressHUDDelegate {
             }, animated: true)
     }
     
-    @IBAction func showSimpleWithIndeterminatedRound(sender: UIButton) {
+    @IBAction func showSimpleWithIndeterminatedRound(_ sender: UIButton) {
         // The hud will dispable all input on the view (use the higest view possible in the view hierarchy)
         HUD = MBProgressHUD(view: self.navigationController!.view)
         self.navigationController!.view.addSubview(HUD!)
@@ -227,7 +227,7 @@ class ViewController: UIViewController, MBProgressHUDDelegate {
         // Register for HUD callbacks so we can remove it from the window at the right time
         HUD!.delegate = self
         
-        HUD!.mode = .AnnularIndeterminate
+        HUD!.mode = .annularIndeterminate
         
         // Show the HUD while the provide method  executes in a new thread
         HUD!.showWhileExecuting({ [unowned self] () -> Void in
@@ -255,7 +255,7 @@ class ViewController: UIViewController, MBProgressHUDDelegate {
         // Indeterminate mode
         sleep(2)
         // Switch to determinate mode
-        HUD!.mode = .Determinate
+        HUD!.mode = .determinate
         HUD!.labelText = "Progress"
         var progress: Float = 0.0
         while progress < 1.0 {
@@ -264,45 +264,45 @@ class ViewController: UIViewController, MBProgressHUDDelegate {
             usleep(50000)
         }
         // Back to indeterminate mode
-        HUD!.mode = .Indeterminate
+        HUD!.mode = .indeterminate
         HUD!.labelText = "Cleaning up"
         sleep(2)
         // UIImageView is a UIKit class, we have to initialize it on the main thread
         var imageView: UIImageView?;
-        dispatch_sync(dispatch_get_main_queue()) {
+        DispatchQueue.main.sync {
             let image: UIImage? = UIImage(named: "37x-Checkmark.png")
             imageView = UIImageView(image: image)
         }
         HUD!.customView = imageView
-        HUD!.mode = .CustomView
+        HUD!.mode = .customView
         HUD!.labelText = "Completed"
         sleep(2)
     }
     
     // MARK: - NSURLConnectionDelegate
-    func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
+    func connection(_ connection: NSURLConnection, didReceiveResponse response: URLResponse) {
         expectedLength = max(response.expectedContentLength, 1)
         currentLength = 0
-        HUD!.mode = MBProgressHUDMode.Determinate
+        HUD!.mode = MBProgressHUDMode.determinate
     }
     
-    func connection(connection: NSURLConnection, didReceiveData data: NSData) {
-        currentLength += data.length
+    func connection(_ connection: NSURLConnection, didReceiveData data: Data) {
+        currentLength += data.count
         HUD!.progress = Float(currentLength) / Float(expectedLength)
     }
     
-    func connectionDidFinishLoading(connection: NSURLConnection) {
+    func connectionDidFinishLoading(_ connection: NSURLConnection) {
         HUD!.customView = UIImageView(image: UIImage(named: "37x-Checkmark.png"))
-        HUD!.mode = .CustomView
+        HUD!.mode = .customView
         HUD!.hide(true, afterDelay: 2)
     }
     
-    func connection(connection: NSURLConnection, didFailWithError error: NSError) {
+    func connection(_ connection: NSURLConnection, didFailWithError error: NSError) {
         HUD!.hide(true)
     }
     
     // MARK: - MBProgressHUDDelegate
-    func hudWasHidden(hud: MBProgressHUD) {
+    func hudWasHidden(_ hud: MBProgressHUD) {
         HUD!.removeFromSuperview()
         HUD = nil
     }
