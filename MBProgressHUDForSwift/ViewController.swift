@@ -287,7 +287,7 @@ class ViewController: UIViewController, MBProgressHUDDelegate {
     }
     
     func connection(_ connection: NSURLConnection, didReceiveData data: Data) {
-        currentLength += data.count
+        currentLength += Int64(data.count)
         HUD!.progress = Float(currentLength) / Float(expectedLength)
     }
     
